@@ -13,11 +13,15 @@ public class Register extends BaseTests{
     public void RegistrationSuccessful(){
         JSONObject request = new JSONObject();
 
+        // read the username as testng parameter (APPLY ON ALL TESTCASES)
+        // read the password as a secret (env variable, or maven parameter) (APPLY ON ALL TESTCASES)
         request.put("email", "brayan@gl.com");
         request.put("password", "brayan");
 
         System.out.println(request.toJSONString());
 
+
+        // validate more than just the status code
         given()
                 .body(request.toJSONString())
                 .when()
@@ -35,6 +39,7 @@ public class Register extends BaseTests{
 
         System.out.println(request.toJSONString());
 
+        // validate more than just the status code
         given()
                 .body(request.toJSONString())
                 .when()
