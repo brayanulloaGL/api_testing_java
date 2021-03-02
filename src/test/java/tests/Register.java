@@ -42,5 +42,6 @@ public class Register extends BaseTests{
                 .then()
                 .statusCode(400)
                 .log().all();
+        //test
     }
 }
