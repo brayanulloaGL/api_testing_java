@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 
 public class User extends BaseTests {
 
-    @Test
+    @Test (groups = {"Regression", "Positive"})
     public void GetListOfUsers(){
         given()
                 .get(Constants.GET_USERS)
@@ -20,7 +20,7 @@ public class User extends BaseTests {
                 .log().all();
     }
 
-    @Test
+    @Test (groups = {"Regression", "Positive"})
     public void VerifyUserEmail(){
         given()
                 .get(Constants.GET_USERS)
@@ -30,7 +30,7 @@ public class User extends BaseTests {
                 .log().all();
     }
 
-    @Test
+    @Test (groups = {"Regression", "Positive"})
     public void CreateUser(){
         JSONObject request = new JSONObject();
 
@@ -48,7 +48,7 @@ public class User extends BaseTests {
                 .log().all();
     }
 
-    @Test
+    @Test (groups = {"Regression", "Positive"})
     public void UpdateUser(){
         JSONObject request = new JSONObject();
 
@@ -66,7 +66,7 @@ public class User extends BaseTests {
                 .log().all();
     }
 
-    @Test
+    @Test (groups = {"Regression", "Positive"})
     public void PatchUpdateUser(){
         JSONObject request = new JSONObject();
 
@@ -84,7 +84,7 @@ public class User extends BaseTests {
                 .log().all();
     }
 
-    @Test
+    @Test (groups = {"Regression", "Positive"})
     public void deleteUser(){
         when().
                 delete(Constants.PUT_PATCH_DELETE_USERS).

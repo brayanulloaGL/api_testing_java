@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class Register extends BaseTests{
 
-    @Test
+    @Test (groups = {"Regression", "Positive"})
     public void RegistrationSuccessful(){
         JSONObject request = new JSONObject();
 
@@ -27,7 +27,7 @@ public class Register extends BaseTests{
                 .log().all();
     }
 
-    @Test
+    @Test (groups = {"Regression", "Negative"})
     public void RegistrationUnsuccessful(){
         JSONObject request = new JSONObject();
 

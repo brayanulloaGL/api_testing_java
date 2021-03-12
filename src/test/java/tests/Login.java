@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 
 public class Login extends BaseTests {
 
-    @Test
+    @Test(groups = {"Regression", "Positive"})
     public void LoginSuccessful(){
         given()
                 .auth()
