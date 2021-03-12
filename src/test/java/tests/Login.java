@@ -2,7 +2,6 @@ package tests;
 
 import base.BaseTests;
 import constants.Constants;
-import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;

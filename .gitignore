@@ -1,0 +1,4 @@
+# Default ignored files
+.idea
+target/*
+api_testing_java.iml
