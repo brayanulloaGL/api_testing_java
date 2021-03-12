@@ -3,14 +3,16 @@ package tests;
 import base.BaseTests;
 import constants.Constants;
 import org.json.simple.JSONObject;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
 public class Register extends BaseTests{
 
+    @Parameters("post_successful_register_url")
     @Test (groups = {"Regression", "Positive"})
-    public void RegistrationSuccessful(){
+    public void RegistrationSuccessful(String postSuccessfulRegisterURL){
         JSONObject request = new JSONObject();
 
         request.put("email", "brayan@gl.com");
@@ -21,14 +23,15 @@ public class Register extends BaseTests{
         given()
                 .body(request.toJSONString())
                 .when()
-                .post(Constants.POST_SUCCESSFUL_REGISTER)
+                .post(postSuccessfulRegisterURL)
                 .then()
                 .statusCode(201)
                 .log().all();
     }
 
+    @Parameters("post_unsuccessful_register_url")
     @Test (groups = {"Regression", "Negative"})
-    public void RegistrationUnsuccessful(){
+    public void RegistrationUnsuccessful(String postUnsuccessfulRegisterURL){
         JSONObject request = new JSONObject();
 
         request.put("email", "brayan@gl.com");
@@ -38,7 +41,7 @@ public class Register extends BaseTests{
         given()
                 .body(request.toJSONString())
                 .when()
-                .post(Constants.POST_UNSUCCESSFUL_REGISTER)
+                .post(postUnsuccessfulRegisterURL)
                 .then()
                 .statusCode(400)
                 .log().all();

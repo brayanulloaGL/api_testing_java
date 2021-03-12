@@ -3,6 +3,7 @@ package tests;
 import base.BaseTests;
 import constants.Constants;
 import org.json.simple.JSONObject;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.when;
@@ -11,27 +12,30 @@ import static io.restassured.RestAssured.given;
 
 public class User extends BaseTests {
 
+    @Parameters("get_users_url")
     @Test (groups = {"Regression", "Positive"})
-    public void GetListOfUsers(){
+    public void GetListOfUsers(String getUsersURL){
         given()
-                .get(Constants.GET_USERS)
+                .get(getUsersURL)
                 .then()
                 .statusCode(200)
                 .log().all();
     }
 
+    @Parameters("get_users_url")
     @Test (groups = {"Regression", "Positive"})
-    public void VerifyUserEmail(){
+    public void VerifyUserEmail(String getUsersURL){
         given()
-                .get(Constants.GET_USERS)
+                .get(getUsersURL)
                 .then()
                 .statusCode(200)
                 .body("data.email[0]", equalTo("michael.lawson@reqres.in"))
                 .log().all();
     }
 
+    @Parameters("post_users_url")
     @Test (groups = {"Regression", "Positive"})
-    public void CreateUser(){
+    public void CreateUser(String postUserURL){
         JSONObject request = new JSONObject();
 
         request.put("name", "Bryan");
@@ -42,14 +46,15 @@ public class User extends BaseTests {
         given()
                 .body(request.toJSONString())
                 .when()
-                .post(Constants.POST_USERS)
+                .post(postUserURL)
                 .then()
                 .statusCode(201)
                 .log().all();
     }
 
+    @Parameters("put_patch_delete_users_url")
     @Test (groups = {"Regression", "Positive"})
-    public void UpdateUser(){
+    public void UpdateUser(String putPatchDeleteUserURL){
         JSONObject request = new JSONObject();
 
         request.put("name", "Rodolfo");
@@ -60,14 +65,15 @@ public class User extends BaseTests {
         given()
                 .body(request.toJSONString())
                 .when()
-                .put(Constants.PUT_PATCH_DELETE_USERS)
+                .put(putPatchDeleteUserURL)
                 .then()
                 .statusCode(200)
                 .log().all();
     }
 
+    @Parameters("put_patch_delete_users_url")
     @Test (groups = {"Regression", "Positive"})
-    public void PatchUpdateUser(){
+    public void PatchUpdateUser(String putPatchDeleteUserURL){
         JSONObject request = new JSONObject();
 
         request.put("name", "Rafa");
@@ -78,16 +84,17 @@ public class User extends BaseTests {
         given()
                 .body(request.toJSONString())
                 .when()
-                .patch(Constants.PUT_PATCH_DELETE_USERS)
+                .patch(putPatchDeleteUserURL)
                 .then()
                 .statusCode(200)
                 .log().all();
     }
 
+    @Parameters("put_patch_delete_users_url")
     @Test (groups = {"Regression", "Positive"})
-    public void deleteUser(){
+    public void deleteUser(String putPatchDeleteUserURL){
         when().
-                delete(Constants.PUT_PATCH_DELETE_USERS).
+                delete(putPatchDeleteUserURL).
                 then().
                 statusCode(204).
                 log().all();
