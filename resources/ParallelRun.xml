@@ -1,6 +1,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Parallel Suite" parallel="classes" thread-count="4">
-    <test name="Parallel Regression ">
+    <test name="Parallel Regression">
+        <parameter name="base_url" value="https://reqres.in/api"/>
+        <parameter name="get_users_url" value="/users?page=2"/>
+        <parameter name="post_users_url" value="/users"/>
+        <parameter name="put_patch_delete_users_url" value="/users/2"/>
+        <parameter name="post_successful_register_url" value="/api/register"/>
+        <parameter name="post_unsuccessful_register_url" value="/register"/>
+        <parameter name="post_login_url" value="/login"/>
         <classes>
             <class name="tests.Login"/>
             <class name="tests.Register"/>
