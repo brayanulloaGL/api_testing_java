@@ -58,7 +58,7 @@
                 <version>3.0.0-M1</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${TestNGFile}</suiteXmlFile>
+                        <suiteXmlFile>resources/${TestNGFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
