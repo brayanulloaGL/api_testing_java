@@ -1,7 +1,6 @@
 package base;
 
 import io.restassured.RestAssured;
-import constants.Constants;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 

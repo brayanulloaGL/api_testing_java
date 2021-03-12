@@ -1,7 +1,6 @@
 package tests;
 
 import base.BaseTests;
-import constants.Constants;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
