@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTests;
+import base.UserPojo;
 import org.json.simple.JSONObject;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -8,12 +9,18 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
+import com.google.gson.Gson;
 
 public class User extends BaseTests {
+
+    UserPojo userPojo = new UserPojo();
 
     @Parameters("get_users_url")
     @Test (groups = {"Regression", "Positive"})
     public void GetListOfUsers(String getUsersURL){
+
+        userPojo.setName("Bryan");
+        userPojo.setJob("QA");
         given()
                 .get(getUsersURL)
                 .then()
@@ -35,15 +42,13 @@ public class User extends BaseTests {
     @Parameters("post_users_url")
     @Test (groups = {"Regression", "Positive"})
     public void CreateUser(String postUserURL){
-        JSONObject request = new JSONObject();
 
-        request.put("name", "Bryan");
-        request.put("job", "QA Engineer");
-
-        System.out.println(request.toJSONString());
+        userPojo.setName("Bryan");
+        userPojo.setJob("QA");
 
         given()
-                .body(request.toJSONString())
+                .contentType("application/json")
+                .body(userPojo)
                 .when()
                 .post(postUserURL)
                 .then()
