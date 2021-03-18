@@ -18,9 +18,6 @@ public class User extends BaseTests {
     @Parameters("get_users_url")
     @Test (groups = {"Regression", "Positive"})
     public void GetListOfUsers(String getUsersURL){
-
-        userPojo.setName("Bryan");
-        userPojo.setJob("QA");
         given()
                 .get(getUsersURL)
                 .then()
@@ -59,15 +56,13 @@ public class User extends BaseTests {
     @Parameters("put_patch_delete_users_url")
     @Test (groups = {"Regression", "Positive"})
     public void UpdateUser(String putPatchDeleteUserURL){
-        JSONObject request = new JSONObject();
 
-        request.put("name", "Rodolfo");
-        request.put("job", "Practice Lead");
-
-        System.out.println(request.toJSONString());
+        userPojo.setName("Carlos");
+        userPojo.setJob("Developer");
 
         given()
-                .body(request.toJSONString())
+                .contentType("application/json")
+                .body(userPojo)
                 .when()
                 .put(putPatchDeleteUserURL)
                 .then()
@@ -78,15 +73,13 @@ public class User extends BaseTests {
     @Parameters("put_patch_delete_users_url")
     @Test (groups = {"Regression", "Positive"})
     public void PatchUpdateUser(String putPatchDeleteUserURL){
-        JSONObject request = new JSONObject();
 
-        request.put("name", "Rafa");
-        request.put("job", "QA Engineer");
-
-        System.out.println(request.toJSONString());
+        userPojo.setName("Roberto");
+        userPojo.setJob("Product Owner");
 
         given()
-                .body(request.toJSONString())
+                .contentType("application/json")
+                .body(userPojo)
                 .when()
                 .patch(putPatchDeleteUserURL)
                 .then()
