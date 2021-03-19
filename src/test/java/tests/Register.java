@@ -1,26 +1,28 @@
 package tests;
 
 import base.BaseTests;
+import base.RegisterPojo;
 import org.json.simple.JSONObject;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import com.google.gson.Gson;
 
 import static io.restassured.RestAssured.given;
 
 public class Register extends BaseTests{
 
+    RegisterPojo registerPojo = new RegisterPojo();
+
     @Parameters("post_successful_register_url")
     @Test (groups = {"Regression", "Positive"})
     public void RegistrationSuccessful(String postSuccessfulRegisterURL){
-        JSONObject request = new JSONObject();
 
-        request.put("email", "brayan@gl.com");
-        request.put("password", "brayan");
-
-        System.out.println(request.toJSONString());
+        registerPojo.setEmail("brayan.ulloa@gl.com");
+        registerPojo.setPassword("brayan");
 
         given()
-                .body(request.toJSONString())
+                .contentType("application/json")
+                .body(registerPojo)
                 .when()
                 .post(postSuccessfulRegisterURL)
                 .then()
@@ -31,14 +33,12 @@ public class Register extends BaseTests{
     @Parameters("post_unsuccessful_register_url")
     @Test (groups = {"Regression", "Negative"})
     public void RegistrationUnsuccessful(String postUnsuccessfulRegisterURL){
-        JSONObject request = new JSONObject();
 
-        request.put("email", "brayan@gl.com");
-
-        System.out.println(request.toJSONString());
+        registerPojo.setEmail("brayan.ulloa@gl.com");
 
         given()
-                .body(request.toJSONString())
+                .contentType("application/json")
+                .body(registerPojo)
                 .when()
                 .post(postUnsuccessfulRegisterURL)
                 .then()
