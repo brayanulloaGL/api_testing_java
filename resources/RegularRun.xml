@@ -8,6 +8,7 @@
         <parameter name="post_successful_register_url" value="/api/register"/>
         <parameter name="post_unsuccessful_register_url" value="/register"/>
         <parameter name="post_login_url" value="/login"/>
+        <parameter name="email" value="brayan.ulloa@gl.com"/>
         <classes>
             <class name="tests.Login"/>
             <class name="tests.Register"/>

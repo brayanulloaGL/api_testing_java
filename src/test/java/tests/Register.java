@@ -13,12 +13,12 @@ public class Register extends BaseTests{
 
     RegisterPojo registerPojo = new RegisterPojo();
 
-    @Parameters("post_successful_register_url")
+    @Parameters({"post_successful_register_url", "email"})
     @Test (groups = {"Regression", "Positive"})
-    public void RegistrationSuccessful(String postSuccessfulRegisterURL){
+    public void RegistrationSuccessful(String postSuccessfulRegisterURL, String email){
 
-        registerPojo.setEmail("brayan.ulloa@gl.com");
-        registerPojo.setPassword("brayan");
+        registerPojo.setEmail(email);
+        registerPojo.setPassword(System.getenv("PASSWORD"));
 
         given()
                 .contentType("application/json")
