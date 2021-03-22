@@ -2,15 +2,22 @@ package tests;
 
 import base.BaseTests;
 import base.UserPojo;
+import io.restassured.RestAssured;
 import org.json.simple.JSONObject;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.when;
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.*;
+
+
 import com.google.gson.Gson;
+
+import javax.xml.ws.Response;
+import java.nio.file.Paths;
 
 public class User extends BaseTests {
 
@@ -89,5 +96,14 @@ public class User extends BaseTests {
                 .delete(putPatchDeleteUserURL)
                 .then()
                 .assertThat().statusCode(204);
+    }
+
+    @Parameters("get_users_url")
+    @Test
+    public void VerifyResponseTime(String getUsersURL){
+        when()
+                .get(getUsersURL)
+                .then()
+                .assertThat().time(lessThan(2000L)); // Milliseconds
     }
 }
