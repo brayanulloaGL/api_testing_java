@@ -26,8 +26,7 @@ public class Register extends BaseTests{
                 .when()
                 .post(postSuccessfulRegisterURL)
                 .then()
-                .statusCode(201)
-                .log().all();
+                .assertThat().statusCode(201);
     }
 
     @Parameters("post_unsuccessful_register_url")
@@ -42,7 +41,6 @@ public class Register extends BaseTests{
                 .when()
                 .post(postUnsuccessfulRegisterURL)
                 .then()
-                .statusCode(400)
-                .log().all();
+                .assertThat().statusCode(400);
     }
 }

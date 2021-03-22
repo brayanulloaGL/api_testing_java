@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
+import static org.assertj.core.api.Assertions.*;
 import com.google.gson.Gson;
 
 public class User extends BaseTests {
@@ -21,8 +22,7 @@ public class User extends BaseTests {
         given()
                 .get(getUsersURL)
                 .then()
-                .statusCode(200)
-                .log().all();
+                .assertThat().statusCode(200);
     }
 
     @Parameters("get_users_url")
@@ -31,9 +31,7 @@ public class User extends BaseTests {
         given()
                 .get(getUsersURL)
                 .then()
-                .statusCode(200)
-                .body("data.email[0]", equalTo("michael.lawson@reqres.in"))
-                .log().all();
+                .assertThat().body("data.email[0]", equalTo("michael.lawson@reqres.in"));
     }
 
     @Parameters("post_users_url")
@@ -49,8 +47,7 @@ public class User extends BaseTests {
                 .when()
                 .post(postUserURL)
                 .then()
-                .statusCode(201)
-                .log().all();
+                .assertThat().statusCode(201);
     }
 
     @Parameters("put_patch_delete_users_url")
@@ -66,8 +63,7 @@ public class User extends BaseTests {
                 .when()
                 .put(putPatchDeleteUserURL)
                 .then()
-                .statusCode(200)
-                .log().all();
+                .assertThat().statusCode(200);
     }
 
     @Parameters("put_patch_delete_users_url")
@@ -83,17 +79,15 @@ public class User extends BaseTests {
                 .when()
                 .patch(putPatchDeleteUserURL)
                 .then()
-                .statusCode(200)
-                .log().all();
+                .assertThat().statusCode(200);
     }
 
     @Parameters("put_patch_delete_users_url")
     @Test (groups = {"Regression", "Positive"})
     public void deleteUser(String putPatchDeleteUserURL){
-        when().
-                delete(putPatchDeleteUserURL).
-                then().
-                statusCode(204).
-                log().all();
+        when()
+                .delete(putPatchDeleteUserURL)
+                .then()
+                .assertThat().statusCode(204);
     }
 }

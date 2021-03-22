@@ -18,8 +18,7 @@ public class Login extends BaseTests {
                 .when()
                 .get(postLoginURL)
                 .then()
-                .statusCode(200)
-                .log().all();
+                .assertThat().statusCode(200);
     }
 }
 
