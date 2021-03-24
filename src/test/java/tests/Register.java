@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.google.gson.Gson;
+import static org.assertj.core.api.Assertions.*;
 
 import static io.restassured.RestAssured.given;
 

@@ -3,6 +3,7 @@ package tests;
 import base.BaseTests;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import static org.assertj.core.api.Assertions.*;
 
 import static io.restassured.RestAssured.given;
 
