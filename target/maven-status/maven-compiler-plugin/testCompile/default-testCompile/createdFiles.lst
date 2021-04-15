@@ -1,0 +1,6 @@
+tests/Register.class
+base/UserPojo.class
+tests/Login.class
+base/BaseTests.class
+tests/User.class
+base/RegisterPojo.class
