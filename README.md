@@ -2,7 +2,7 @@
 
 The following tecnologies were implemented in this project: 
 
-- RestAssure
+- RestAssured
 - Java
 - TestNG
 - Maven
