@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-03-26T19:24:05Z" name="Parallel Suite" finished-at="2021-03-26T19:24:09Z" duration-ms="3884">
+    <groups>
+      <group name="Negative">
+        <method signature="Register.RegistrationUnsuccessful(java.lang.String)[pri:0, instance:tests.Register@4d5b6aac]" name="RegistrationUnsuccessful" class="tests.Register"/>
+      </group> <!-- Negative -->
+      <group name="Positive">
+        <method signature="Login.LoginSuccessful(java.lang.String)[pri:0, instance:tests.Login@10d307f1]" name="LoginSuccessful" class="tests.Login"/>
+        <method signature="Register.RegistrationSuccessful(java.lang.String, java.lang.String)[pri:0, instance:tests.Register@4d5b6aac]" name="RegistrationSuccessful" class="tests.Register"/>
+        <method signature="User.CreateUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="CreateUser" class="tests.User"/>
+        <method signature="User.GetListOfUsers(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="GetListOfUsers" class="tests.User"/>
+        <method signature="User.PatchUpdateUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="PatchUpdateUser" class="tests.User"/>
+        <method signature="User.UpdateUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="UpdateUser" class="tests.User"/>
+        <method signature="User.VerifyUserEmail(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="VerifyUserEmail" class="tests.User"/>
+        <method signature="User.deleteUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="deleteUser" class="tests.User"/>
+      </group> <!-- Positive -->
+      <group name="Regression">
+        <method signature="Login.LoginSuccessful(java.lang.String)[pri:0, instance:tests.Login@10d307f1]" name="LoginSuccessful" class="tests.Login"/>
+        <method signature="Register.RegistrationSuccessful(java.lang.String, java.lang.String)[pri:0, instance:tests.Register@4d5b6aac]" name="RegistrationSuccessful" class="tests.Register"/>
+        <method signature="Register.RegistrationUnsuccessful(java.lang.String)[pri:0, instance:tests.Register@4d5b6aac]" name="RegistrationUnsuccessful" class="tests.Register"/>
+        <method signature="User.CreateUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="CreateUser" class="tests.User"/>
+        <method signature="User.GetListOfUsers(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="GetListOfUsers" class="tests.User"/>
+        <method signature="User.PatchUpdateUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="PatchUpdateUser" class="tests.User"/>
+        <method signature="User.UpdateUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="UpdateUser" class="tests.User"/>
+        <method signature="User.VerifyUserEmail(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="VerifyUserEmail" class="tests.User"/>
+        <method signature="User.deleteUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" name="deleteUser" class="tests.User"/>
+      </group> <!-- Regression -->
+    </groups>
+    <test started-at="2021-03-26T19:24:05Z" name="Parallel Regression" finished-at="2021-03-26T19:24:09Z" duration-ms="3884">
+      <class name="tests.Login">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:tests.Login@10d307f1]" started-at="2021-03-26T19:24:05Z" name="setUp" finished-at="2021-03-26T19:24:06Z" duration-ms="404" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://reqres.in/api]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="LoginSuccessful(java.lang.String)[pri:0, instance:tests.Login@10d307f1]" started-at="2021-03-26T19:24:06Z" name="LoginSuccessful" finished-at="2021-03-26T19:24:06Z" duration-ms="803" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/login]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginSuccessful -->
+      </class> <!-- tests.Login -->
+      <class name="tests.User">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:tests.User@3e84448c]" started-at="2021-03-26T19:24:05Z" name="setUp" finished-at="2021-03-26T19:24:06Z" duration-ms="404" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://reqres.in/api]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="CreateUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" started-at="2021-03-26T19:24:06Z" name="CreateUser" finished-at="2021-03-26T19:24:07Z" duration-ms="1016" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/users]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CreateUser -->
+        <test-method signature="GetListOfUsers(java.lang.String)[pri:0, instance:tests.User@3e84448c]" started-at="2021-03-26T19:24:07Z" name="GetListOfUsers" finished-at="2021-03-26T19:24:07Z" duration-ms="203" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/users?page=2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GetListOfUsers -->
+        <test-method signature="PatchUpdateUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" started-at="2021-03-26T19:24:07Z" name="PatchUpdateUser" finished-at="2021-03-26T19:24:07Z" duration-ms="485" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/users/2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PatchUpdateUser -->
+        <test-method signature="UpdateUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" started-at="2021-03-26T19:24:07Z" name="UpdateUser" finished-at="2021-03-26T19:24:08Z" duration-ms="476" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/users/2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- UpdateUser -->
+        <test-method signature="VerifyResponseTime(java.lang.String)[pri:0, instance:tests.User@3e84448c]" started-at="2021-03-26T19:24:08Z" name="VerifyResponseTime" finished-at="2021-03-26T19:24:08Z" duration-ms="206" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/users?page=2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyResponseTime -->
+        <test-method signature="VerifyUserEmail(java.lang.String)[pri:0, instance:tests.User@3e84448c]" started-at="2021-03-26T19:24:08Z" name="VerifyUserEmail" finished-at="2021-03-26T19:24:09Z" duration-ms="558" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/users?page=2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerifyUserEmail -->
+        <test-method signature="deleteUser(java.lang.String)[pri:0, instance:tests.User@3e84448c]" started-at="2021-03-26T19:24:09Z" name="deleteUser" finished-at="2021-03-26T19:24:09Z" duration-ms="523" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/users/2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteUser -->
+      </class> <!-- tests.User -->
+      <class name="tests.Register">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:tests.Register@4d5b6aac]" started-at="2021-03-26T19:24:05Z" name="setUp" finished-at="2021-03-26T19:24:06Z" duration-ms="404" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[https://reqres.in/api]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="RegistrationSuccessful(java.lang.String, java.lang.String)[pri:0, instance:tests.Register@4d5b6aac]" started-at="2021-03-26T19:24:06Z" name="RegistrationSuccessful" finished-at="2021-03-26T19:24:07Z" duration-ms="1016" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/api/register]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[brayan.ulloa@gl.com]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RegistrationSuccessful -->
+        <test-method signature="RegistrationUnsuccessful(java.lang.String)[pri:0, instance:tests.Register@4d5b6aac]" started-at="2021-03-26T19:24:07Z" name="RegistrationUnsuccessful" finished-at="2021-03-26T19:24:07Z" duration-ms="473" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/register]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RegistrationUnsuccessful -->
+      </class> <!-- tests.Register -->
+    </test> <!-- Parallel Regression -->
+  </suite> <!-- Parallel Suite -->
+</testng-results>
