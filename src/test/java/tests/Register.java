@@ -1,47 +1,47 @@
 package tests;
 
 import base.BaseTests;
-import constants.Constants;
+import base.RegisterPojo;
 import org.json.simple.JSONObject;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import com.google.gson.Gson;
+import static org.assertj.core.api.Assertions.*;
 
 import static io.restassured.RestAssured.given;
 
 public class Register extends BaseTests{
 
-    @Test
-    public void RegistrationSuccessful(){
-        JSONObject request = new JSONObject();
+    RegisterPojo registerPojo = new RegisterPojo();
 
-        request.put("email", "brayan@gl.com");
-        request.put("password", "brayan");
+    @Parameters({"post_successful_register_url", "email"})
+    @Test (groups = {"Regression", "Positive"})
+    public void RegistrationSuccessful(String postSuccessfulRegisterURL, String email){
 
-        System.out.println(request.toJSONString());
+        registerPojo.setEmail(email);
+        registerPojo.setPassword(System.getenv("PASSWORD"));
 
         given()
-                .body(request.toJSONString())
+                .contentType("application/json")
+                .body(registerPojo)
                 .when()
-                .post(Constants.POST_SUCCESSFUL_REGISTER)
+                .post(postSuccessfulRegisterURL)
                 .then()
-                .statusCode(201)
-                .log().all();
+                .assertThat().statusCode(201);
     }
 
-    @Test
-    public void RegistrationUnsuccessful(){
-        JSONObject request = new JSONObject();
+    @Parameters("post_unsuccessful_register_url")
+    @Test (groups = {"Regression", "Negative"})
+    public void RegistrationUnsuccessful(String postUnsuccessfulRegisterURL){
 
-        request.put("email", "brayan@gl.com");
-
-        System.out.println(request.toJSONString());
+        registerPojo.setEmail("brayan.ulloa@gl.com");
 
         given()
-                .body(request.toJSONString())
+                .contentType("application/json")
+                .body(registerPojo)
                 .when()
-                .post(Constants.POST_UNSUCCESSFUL_REGISTER)
+                .post(postUnsuccessfulRegisterURL)
                 .then()
-                .statusCode(400)
-                .log().all();
-        //test
+                .assertThat().statusCode(400);
     }
 }

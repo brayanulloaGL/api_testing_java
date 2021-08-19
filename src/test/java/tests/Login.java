@@ -1,25 +1,25 @@
 package tests;
 
 import base.BaseTests;
-import constants.Constants;
-import org.json.simple.JSONObject;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import static org.assertj.core.api.Assertions.*;
 
 import static io.restassured.RestAssured.given;
 
 public class Login extends BaseTests {
 
-    @Test
-    public void LoginSuccessful(){
+    @Parameters("post_login_url")
+    @Test(groups = {"Regression", "Positive"})
+    public void LoginSuccessful(String postLoginURL){
         given()
                 .auth()
                 .preemptive()
                 .basic("eve.holt@reqres.in", "")
                 .when()
-                .get(Constants.POST_LOGIN)
+                .get(postLoginURL)
                 .then()
-                .statusCode(200)
-                .log().all();
+                .assertThat().statusCode(200);
     }
 }
 

@@ -1,95 +1,109 @@
 package tests;
 
 import base.BaseTests;
-import constants.Constants;
+import base.UserPojo;
+import io.restassured.RestAssured;
 import org.json.simple.JSONObject;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.when;
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
+import static org.assertj.core.api.Assertions.*;
+
+
+import com.google.gson.Gson;
+
+import javax.xml.ws.Response;
+import java.nio.file.Paths;
 
 public class User extends BaseTests {
 
-    @Test
-    public void GetListOfUsers(){
+    UserPojo userPojo = new UserPojo();
+
+    @Parameters("get_users_url")
+    @Test (groups = {"Regression", "Positive"})
+    public void GetListOfUsers(String getUsersURL){
         given()
-                .get(Constants.GET_USERS)
+                .get(getUsersURL)
                 .then()
-                .statusCode(200)
-                .log().all();
+                .assertThat().statusCode(200);
     }
 
-    @Test
-    public void VerifyUserEmail(){
+    @Parameters("get_users_url")
+    @Test (groups = {"Regression", "Positive"})
+    public void VerifyUserEmail(String getUsersURL){
         given()
-                .get(Constants.GET_USERS)
+                .get(getUsersURL)
                 .then()
-                .statusCode(200)
-                .body("data.email[0]", equalTo("michael.lawson@reqres.in"))
-                .log().all();
+                .assertThat().body("data.email[0]", equalTo("michael.lawson@reqres.in"));
     }
 
-    @Test
-    public void CreateUser(){
-        JSONObject request = new JSONObject();
+    @Parameters("post_users_url")
+    @Test (groups = {"Regression", "Positive"})
+    public void CreateUser(String postUserURL){
 
-        request.put("name", "Bryan");
-        request.put("job", "QA Engineer");
-
-        System.out.println(request.toJSONString());
+        userPojo.setName("Bryan");
+        userPojo.setJob("QA");
 
         given()
-                .body(request.toJSONString())
+                .contentType("application/json")
+                .body(userPojo)
                 .when()
-                .post(Constants.POST_USERS)
+                .post(postUserURL)
                 .then()
-                .statusCode(201)
-                .log().all();
+                .assertThat().statusCode(201);
     }
 
-    @Test
-    public void UpdateUser(){
-        JSONObject request = new JSONObject();
+    @Parameters("put_patch_delete_users_url")
+    @Test (groups = {"Regression", "Positive"})
+    public void UpdateUser(String putPatchDeleteUserURL){
 
-        request.put("name", "Rodolfo");
-        request.put("job", "Practice Lead");
-
-        System.out.println(request.toJSONString());
+        userPojo.setName("Carlos");
+        userPojo.setJob("Developer");
 
         given()
-                .body(request.toJSONString())
+                .contentType("application/json")
+                .body(userPojo)
                 .when()
-                .put(Constants.PUT_PATCH_DELETE_USERS)
+                .put(putPatchDeleteUserURL)
                 .then()
-                .statusCode(200)
-                .log().all();
+                .assertThat().statusCode(200);
     }
 
-    @Test
-    public void PatchUpdateUser(){
-        JSONObject request = new JSONObject();
+    @Parameters("put_patch_delete_users_url")
+    @Test (groups = {"Regression", "Positive"})
+    public void PatchUpdateUser(String putPatchDeleteUserURL){
 
-        request.put("name", "Rafa");
-        request.put("job", "QA Engineer");
-
-        System.out.println(request.toJSONString());
+        userPojo.setName("Roberto");
+        userPojo.setJob("Product Owner");
 
         given()
-                .body(request.toJSONString())
+                .contentType("application/json")
+                .body(userPojo)
                 .when()
-                .patch(Constants.PUT_PATCH_DELETE_USERS)
+                .patch(putPatchDeleteUserURL)
                 .then()
-                .statusCode(200)
-                .log().all();
+                .assertThat().statusCode(200);
     }
 
+    @Parameters("put_patch_delete_users_url")
+    @Test (groups = {"Regression", "Positive"})
+    public void deleteUser(String putPatchDeleteUserURL){
+        when()
+                .delete(putPatchDeleteUserURL)
+                .then()
+                .assertThat().statusCode(204);
+    }
+
+    @Parameters("get_users_url")
     @Test
-    public void deleteUser(){
-        when().
-                delete(Constants.PUT_PATCH_DELETE_USERS).
-                then().
-                statusCode(204).
-                log().all();
+    public void VerifyResponseTime(String getUsersURL){
+        when()
+                .get(getUsersURL)
+                .then()
+                .assertThat().time(lessThan(2000L)); // Milliseconds
     }
 }
