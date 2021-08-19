@@ -1,5 +1,5 @@
 # Default ignored files
 .idea
-.target
+.target/
 api_testing_java.iml
 .idea/workspace.xml
