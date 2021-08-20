@@ -40,5 +40,10 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.uncommons:reportng:1.1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: velocity:velocity:1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: velocity:velocity-dep:1.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.google.code.gson:gson:2.8.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.11.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml.ws:jaxws-api:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml.soap:javax.xml.soap-api:1.4.0" level="project" />
   </component>
 </module>
